@@ -1,0 +1,21 @@
+#include <Servo.h>
+
+Servo servoMotor;
+
+const int servoPin = 9;
+const int feedInterval = 86400; // 24 hours in seconds
+
+void setup() {
+  servoMotor.attach(servoPin);
+  servoMotor.write(0); // Initial position
+}
+
+void loop() {
+  // Rotate servo to dispense food
+  servoMotor.write(90);
+  delay(2000); // Wait 2 seconds
+  servoMotor.write(0);
+  
+  // Wait for the next feed interval
+  delay(feedInterval * 1000);
+}
